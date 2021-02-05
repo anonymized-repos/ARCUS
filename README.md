@@ -46,6 +46,6 @@ Learning rate:  0.0001
 AUC: 0.874
 ```
 
-## Example pool adaptation of ARCUS in INSECTS data sets
+## Example concept drift adaptation of ARCUS in INSECTS data sets
 ![dataset](https://drive.google.com/uc?export=view&id=1MppDlvxLx32b6sPc2U0xi6fEg460jmUN)
 
