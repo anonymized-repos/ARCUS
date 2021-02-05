@@ -8,7 +8,10 @@
 - Numpy 1.18.5
 - Pandas 1.0.5
 
-## Links for large data sets (exceeding 100MB)
+## Data sets description
+![dataset](https://drive.google.com/uc?export=view&id=1DlOpvv4DG1Vg5MucHoT7rdqrn78mxzzn)
+
+### Links for large data sets (exceeding 100MB)
 - MNIST_AbrRec: [link](https://drive.google.com/file/d/1KD7gInFa3el08oyHPLDtriF6PDwvkMzM/view?usp=sharing)
 - F_MNIST_AbrRec: [link](https://drive.google.com/file/d/1WSd0KSmswqgwhC5OM-eZ3hX6KoAgDJDg/view?usp=sharing)
 - MNIST_GrdRec: [link](https://drive.google.com/file/d/1drEgdYDLlaMH7P565Du6KUeabqm4mYbJ/view?usp=sharing)
@@ -22,6 +25,8 @@
 - hidden_dims = The number of dimensionality explaining at least 70% of the variance in PCA
 - model_type = one of ["RAPP", "RSRAE", "DAGMM"]
 - inf_type = on eof ["INC", "ADP"] # "INC" for drift-unaware (incremental) and "ADP" for drift-aware (adaptive, proposed)
+
+![dataset](https://drive.google.com/uc?export=view&id=1idoOEHKQTsQsjdY9WW2jzJQ0KlkdxA5E)
 
 ## Example usage
 
@@ -37,4 +42,7 @@ Similarity threshold:  0.8
 Learning rate:  0.0001
 AUC: 0.874
 ```
+
+## Example pool adaptation of ARCUS in INSECTS data sets
+![dataset](https://drive.google.com/uc?export=view&id=1MppDlvxLx32b6sPc2U0xi6fEg460jmUN)
 
