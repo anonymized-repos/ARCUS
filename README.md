@@ -26,11 +26,12 @@
 - model_type = one of ["RAPP", "RSRAE", "DAGMM"]
 - inf_type = on eof ["INC", "ADP"] # "INC" for drift-unaware (incremental) and "ADP" for drift-aware (adaptive, proposed)
 
+### Encoder layer sizes (reversed in a decoder) and learning rates which achieved the best AUC results
 ![dataset](https://drive.google.com/uc?export=view&id=1idoOEHKQTsQsjdY9WW2jzJQ0KlkdxA5E)
 
 ## Example usage
 
-Edit test.py or test.ipynb
+Change the parameter values in test.py or test.ipynb following your test scenario and run the file.
 
 ```
 python test.py
