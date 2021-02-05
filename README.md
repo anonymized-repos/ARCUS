@@ -14,6 +14,13 @@
 - MNIST_GrdRec: [link](https://drive.google.com/file/d/1drEgdYDLlaMH7P565Du6KUeabqm4mYbJ/view?usp=sharing)
 - F_MNIST_GrdRec: [link](https://drive.google.com/file/d/1PNK9bliTGpEiEimnfy8Saf9p0G3BFLBo/view?usp=sharing)
 
+## Default parameter values
+batch = 512
+min_batch = 32
+init_epoch = 5
+intm_epoch = 1
+hidden_dims = The number of dimensionality explaining at least 70% of the variance in PCA
+
 ## Example usage
 
 Edit test.py or test.ipynb
@@ -28,3 +35,4 @@ Similarity threshold:  0.8
 Learning rate:  0.0001
 AUC: 0.874
 ```
+
