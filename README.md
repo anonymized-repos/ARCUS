@@ -15,11 +15,13 @@
 - F_MNIST_GrdRec: [link](https://drive.google.com/file/d/1PNK9bliTGpEiEimnfy8Saf9p0G3BFLBo/view?usp=sharing)
 
 ## Default parameter values
-batch = 512
-min_batch = 32
-init_epoch = 5
-intm_epoch = 1
-hidden_dims = The number of dimensionality explaining at least 70% of the variance in PCA
+- batch = 512
+- min_batch = 32
+- init_epoch = 5
+- intm_epoch = 1
+- hidden_dims = The number of dimensionality explaining at least 70% of the variance in PCA
+- model_type = one of ["RAPP", "RSRAE", "DAGMM"]
+- inf_type = on eof ["INC", "ADP"] # "INC" for drift-unaware (incremental) and "ADP" for drift-aware (adaptive, proposed)
 
 ## Example usage
 
