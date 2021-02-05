@@ -35,7 +35,8 @@ class ARCUS:
                 learning_rate = learning_rate,
                 bn = True,
                 est_dropout_ratio = 0.5,
-                random_seed = random_seed)           
+                random_seed = random_seed)
+        model.num_batch = 0
         return model
 
     def standardize_scores(self, score):
@@ -45,37 +46,42 @@ class ARCUS:
         return standardized_score
 
     def merge_models(self, model1, model2, model_type):
+        num_batch_sum = model1.num_batch + model2.num_batch
+        w1 = model1.num_batch/num_batch_sum
+        w2 = model2.num_batch/num_batch_sum
+        
         for layer_idx in range(len(model2.encoder)):
             l_base = model1.encoder[layer_idx]
             l_target = model2.encoder[layer_idx]
             if l_base.name[:5] == 'layer':
-                new_weight = (l_base.weights[0] + l_target.weights[0])/2
-                new_bias = (l_base.weights[1] + l_target.weights[1])/2
-                l_base.set_weights([new_weight, new_bias])
+                new_weight = (l_base.weights[0]*w1 + l_target.weights[0]*w2)
+                new_bias = (l_base.weights[1]*w1 + l_target.weights[1]*w2)
+                l_target.set_weights([new_weight, new_bias])
             elif l_base.name[:2] == 'bn':
-                new_gamma = (l_base.weights[0] + l_target.weights[0])/2
-                new_beta = (l_base.weights[1] + l_target.weights[1])/2
-                new_mm = (l_base.weights[2] + l_target.weights[2])/2
-                new_mv = (l_base.weights[3] + l_target.weights[3])/2
-                l_base.set_weights([new_gamma, new_beta, new_mm, new_mv])
+                new_gamma = (l_base.weights[0]*w1 + l_target.weights[0]*w2)
+                new_beta = (l_base.weights[1]*w1 + l_target.weights[1]*w2)
+                new_mm = (l_base.weights[2]*w1 + l_target.weights[2]*w2)
+                new_mv = (l_base.weights[3]*w1 + l_target.weights[3]*w2)
+                l_target.set_weights([new_gamma, new_beta, new_mm, new_mv])
 
         if model_type == 'RSRAE':
-            model2.A = (model1.A + model2.A)/2
+            model2.A = (model1.A*w1 + model2.A*w2)
 
         for layer_idx in range(len(model2.decoder)):
             l_base = model1.decoder[layer_idx]
             l_target = model2.decoder[layer_idx]
             if l_base.name[:5] == 'layer':
-                new_weight = (l_base.weights[0] + l_target.weights[0])/2
-                new_bias = (l_base.weights[1] + l_target.weights[1])/2
-                l_base.set_weights([new_weight, new_bias])
+                new_weight = (l_base.weights[0]*w1 + l_target.weights[0]*w2)
+                new_bias = (l_base.weights[1]*w1 + l_target.weights[1]*w2)
+                l_target.set_weights([new_weight, new_bias])
             elif l_base.name[:2] == 'bn':
-                new_gamma = (l_base.weights[0] + l_target.weights[0])/2
-                new_beta = (l_base.weights[1] + l_target.weights[1])/2
-                new_mm = (l_base.weights[2] + l_target.weights[2])/2
-                new_mv = (l_base.weights[3] + l_target.weights[3])/2
-                l_base.set_weights([new_gamma, new_beta, new_mm, new_mv])
-
+                new_gamma = (l_base.weights[0]*w1 + l_target.weights[0]*w2)
+                new_beta = (l_base.weights[1]*w1 + l_target.weights[1]*w2)
+                new_mm = (l_base.weights[2]*w1 + l_target.weights[2]*w2)
+                new_mv = (l_base.weights[3]*w1 + l_target.weights[3]*w2)
+                l_target.set_weights([new_gamma, new_beta, new_mm, new_mv])
+        
+        model2.num_batch = num_batch_sum
         return model2
 
     def reduce_models_last(self, models, x_inp, model_type, thred, min_batch, epoch_num, itr_num):
@@ -114,7 +120,8 @@ class ARCUS:
         model.last_mean_score = np.mean(temp_scores)
         model.last_max_score = np.max(temp_scores)
         model.last_min_score = np.min(temp_scores)
-
+        model.num_batch = model.num_batch+1
+        
         return tmp_losses
 
     def simulator(self, dataset, model_type, inf_type, batch, min_batch, learning_rate, layer_num, hidden_dim, init_epoch, intm_epoch, reliability_thred, similarity_thred, rand_seed, RSRAE_hidden_layer_size):
