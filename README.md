@@ -1,5 +1,7 @@
 # ARCUS: An Adaptive Framework for Autoencoder-based Anomaly Detection from a Complex Evolving Data Stream
 
+## Introduction
+Online anomaly detection from a data stream is critical for the safety and security of many applications, but is facing severe challenges recently, due to complex and evolving data streams from IoT devices and cloud-based infrastructures. Unfortunately, state-of-the-art approaches fall too short for these challenges. Specifically, shallow model approaches (e.g., k nearest neighbors) bear the burden of crafted feature engineering to handle the complexity; deep model approaches (e.g., deep autoencoder) may be off such a burden, but none exists that can handle the evolving data distribution. This paper presents a framework for autoencoder-based anomaly detection, ARCUS, equipped to handle the challenges using a model pooling approach. The framework can be instantiated with any current autoencoder-based anomaly detection models, and is characterized by two novel techniques: concept-driven inference and drift-aware model pool update; the former detects anomalies with a combination of models most appropriate for the complexity, and the latter adapts the model pool dynamically to fit the evolving data. A comprehensive experiment using four synthetic and six real data sets showed that ARCUS improved the anomaly detection accuracy of state-of-the-art autoencoder-based models by up to 25%, and outperformed other conventional models by up to 65%.
 
 ## Required packages
 - Tensorflow 2.2.0
