@@ -18,12 +18,12 @@ ARCUS_instance = ARCUS()
 
 # Problem-setting related hyper parameters
 batch = 512
-min_batch = 128
-init_epoch = 100
+min_batch = 32
+init_epoch = 5
 intm_epoch = 1
 hidden_dims = {
-    "MNIST_AbrRec": 27,  "MNIST_GrdRec": 27, "F_MNIST_AbrRec": 7,  "F_MNIST_GrdRec": 15, "GAS": 2, "RIALTO": 2 
-    ,'INSECTS_Abr': 7,'INSECTS_Incr': 7, 'INSECTS_IncrAbr': 7, 'INSECTS_IncrGrd': 7,'INSECTS_IncrRecr': 7
+    "MNIST_AbrRec": 24,  "MNIST_GrdRec": 25, "F_MNIST_AbrRec": 9,  "F_MNIST_GrdRec": 15, "GAS": 2, "RIALTO": 2 
+    ,'INSECTS_Abr': 6,'INSECTS_Incr': 7, 'INSECTS_IncrGrd': 8,'INSECTS_IncrRecr': 7
 } # The number of pricipal component explaining at least 70% of variance.
 
 
@@ -34,7 +34,7 @@ dataset_name = "MNIST_AbrRec" # "MNIST_AbrRec", "MNIST_GrdRec", "F_MNIST_AbrRec"
 layer_num = 3
 RSRAE_hidden_layer_size = [32, 64, 128] # Suggested by the author. The one or two layers of them may be used according to data sets.
 learning_rate = 1e-4
-reliability_thred = 0.99 
+reliability_thred = 0.95 
 similarity_thred = 0.8
 
 #################################################
