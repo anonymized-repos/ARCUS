@@ -29,7 +29,7 @@ Online anomaly detection from a data stream is critical for the safety and secur
 - inf_type = on eof ["INC", "ADP"] # "INC" for drift-unaware (incremental) and "ADP" for drift-aware (adaptive, proposed)
 
 ### Encoder layer sizes (reversed in a decoder) and learning rates which achieved the best AUC results
-![dataset](https://drive.google.com/uc?export=view&id=1idoOEHKQTsQsjdY9WW2jzJQ0KlkdxA5E)
+![hyperparameters](https://drive.google.com/uc?export=view&id=1idoOEHKQTsQsjdY9WW2jzJQ0KlkdxA5E)
 
 ## Example usage
 
@@ -47,5 +47,5 @@ AUC: 0.874
 ```
 
 ## Example concept drift adaptation of ARCUS in INSECTS data sets
-![dataset](https://drive.google.com/uc?export=view&id=1MppDlvxLx32b6sPc2U0xi6fEg460jmUN)
+![casestudy](https://drive.google.com/uc?export=view&id=1MppDlvxLx32b6sPc2U0xi6fEg460jmUN)
 
